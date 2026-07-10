@@ -1,0 +1,23 @@
+@use '../abstracts/mixins' as mix;
+@use '../abstracts/variables' as variable;
+
+.hero {
+  position: relative;
+  padding: 0 0 100px;
+  min-height: 100vh;
+  z-index: 10;
+
+  &__background {
+    position: absolute;
+    inset: 0;
+    @include mix.bg-image-set(
+      $path: "/src/assets/images/main",
+      $gradient: variable.$gradient-hero,
+      $formats: (jpg)
+    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 1;
+  }
+}

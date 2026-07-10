@@ -1,3 +1,6 @@
+@use 'sass:list';
+@use "sass:map";
+
 @mixin font($name, $weight) {
   font: {
     family: $name;
@@ -6,4 +9,93 @@
   }
   src: url('/fonts/#{ $name }-#{ $weight }.woff2') format("woff2"),
       url('/fonts/#{ $name }-#{ $weight }.woff') format("woff");
+}
+
+
+// Вспомогательная функция – генератор image-set() значения
+
+$image-mime-types: (
+  "avif": "image/avif",
+  "webp": "image/webp",
+  "jp2": "image/jp2",
+);
+
+@function build-image-set-options($path, $formats, $resolutions, $use-type: true) {
+  $options: ();
+
+  @each $fmt in $formats {
+    $mime: null;
+
+    // Вместо функции if() используем чистую директиву @if
+    @if $use-type {
+      $mime: map.get($image-mime-types, $fmt);
+    }
+
+    @each $res in $resolutions {
+
+      // Заменяем устаревший строчный if() на явную логику суффикса
+      $suffix: "";
+      @if $res != 1x {
+        $suffix: "@#{$res}";
+      }
+
+      $url: url("#{$path}#{$suffix}.#{$fmt}");
+
+      $option: null;
+
+      // Формируем опцию через @if / @else, избегая конфликтов с CSS
+      @if $mime { 
+        $option: $url $res type($mime);
+      } @else {
+        $option: $url $res;
+      }
+
+      $options: list.append($options, $option, comma);
+    }
+  }
+
+  @return $options;
+
+}
+
+
+/// Хелпер: Безопасно объединяет градиент со слоем изображения, если градиент передан.
+/// Не вызывает никаких Warning-уведомлений компилятора.
+/// Инкапсуляция логики: Вынесли повторяющееся условие во внутреннюю функцию _combine-with-gradient.
+/// Знак подчеркивания _ в начале имени функции — это негласный стандарт в Sass, указывающий,
+/// что функция «приватная» и используется только внутри этого файла.
+
+@function _combine-with-gradient($gradient, $layer) {
+  @if $gradient {
+    @return ($gradient, $layer)
+  }
+  @return $layer;
+}
+
+/// Основной миксин для адаптивных фоновых изображений
+@mixin bg-image-set(
+  $path,
+  $gradient: null,
+  $formats: (avif, webp, jpg),
+  $resolutions: (1x, 2x),
+  $fallback-ext: "jpg"
+) {
+  // 1. Базовый фолбек для старых браузеров (IE, старый Edge)
+  $fallback-img: url("#{$path}.#{$fallback-ext}");
+  $layers-fallback: _combine-with-gradient($gradient, $fallback-img);
+
+  // 2. Опции для Safari/WebKit префикса
+  $webkit-options: build-image-set-options($path, $formats, $resolutions, false);
+  $webkit-set: -webkit-image-set(#{$webkit-options});
+  $layers-webkit: _combine-with-gradient($gradient, $webkit-set);
+
+  // 3. Опции для современных браузеров (Chrome, Firefox, Opera)
+  $modern-options: build-image-set-options($path, $formats, $resolutions, true);
+  $modern-set: image-set(#{$modern-options});
+  $layers-modern: _combine-with-gradient($gradient, $modern-set);
+
+  // Вывод в CSS (от старого к новому для корректного переопределения браузером)
+  background-image: $layers-fallback;
+  background-image: $layers-webkit;
+  background-image: $layers-modern;
 }
