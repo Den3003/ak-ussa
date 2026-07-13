@@ -1,0 +1,65 @@
+@use '../abstracts/variables' as variable;
+
+.timeline {
+  color: variable.$color-dark-blue;
+
+  &__container {
+    text-align: center;
+  }
+
+  &__name {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: variable.$color-black-name;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0 0 80px;
+  }
+
+  &__years {
+    display: flex;
+    justify-content: space-between;
+    // gap: 0 100px;
+    margin: 0 0 267px;
+  }
+
+  &__card {
+    max-width: 225px;
+    // flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px 0;
+  }
+
+  &__year-block {
+    width: 135px;
+    height: 135px;
+    background-color: variable.$color-main;
+    box-shadow: 0 10px 50px 0 rgba(0, 64, 128, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__year {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &__year-text {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+    max-width: 540px;
+  }
+}

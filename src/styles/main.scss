@@ -18,6 +18,11 @@
 @use 'layouts/header';  // Шапка сайта
 @use 'layouts/hero';  // Секция hero
 @use 'layouts/about';  // Секция aboutUs
+@use 'layouts/timeline';  // Секция timeline
+@use 'layouts/services';  // Секция services
+@use 'layouts/additional';  // Секция additional
+@use 'layouts/opportunities';  // Секция opportunities
+@use 'layouts/footer';  // Подвал сайта
 
 
 // ── 4. Компоненты ───────────────────────────────

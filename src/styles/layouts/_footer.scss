@@ -1,0 +1,92 @@
+@use '../abstracts/variables' as variable;
+
+.footer {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__name {
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px;
+    color: variable.$color-black-name;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0 0 30px;
+    color: variable.$color-dark-blue;
+  }
+
+  &__description {
+    text-align: center;
+    max-width: 610px;
+    font-size: 20px;
+    line-height: 1.35;
+    color: variable.$color-black;
+    margin: 0 0 80px;
+  }
+
+  &__address {
+    max-width: 1460px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 130px;
+    font-style: normal;
+  }
+
+  &__contact-block {
+    display: flex;
+    align-items: center;
+    gap: 0 20px;
+  }
+
+  &__icon-wrapper {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 0 10px 50px 0 rgba(0, 64, 128, 0.1);
+    background-color: variable.$color-main;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__contact-link {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 600;
+    color: variable.$color-black;
+  }
+
+  &__location-text {
+    font-size: 24px;
+    font-weight: 600;
+    color: variable.$color-black;
+  }
+
+  &__copyright {
+    max-width: 1920px;
+    background-color: variable.$color-main;
+    padding: 15px 0 21px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__copyright-text {
+    text-align: center;
+    color: variable.$color-black;
+    margin: 0;
+    font-weight: 500;
+    line-height: 1.38;
+    max-width: 155px;
+  }
+}

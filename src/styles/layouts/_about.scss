@@ -1,9 +1,14 @@
 @use '../abstracts/variables' as variable;
 
 .about {
-  position: relative;
-  padding: 160px 0 250px;
   color: variable.$color-dark-blue;
+
+  &__wrapper {
+    position: relative;
+    padding: 160px 0 250px;
+    max-width: 1920px;
+    margin: 0 auto;
+  }
 
   &__background {
     position: absolute;
@@ -27,6 +32,7 @@
   }
 
   &__name {
+    color: variable.$color-black-name;
     font-size: 20px;
     font-weight: 600;
     margin: 0 0 10px;
@@ -63,8 +69,8 @@
   &__cards-wrapper {
     text-align: center;
     border-radius: 30px;
+    background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 50px 0 rgba(0, 64, 128, 0.05);
-    background-color: variable.$color-main;
     flex-grow: 1;
     padding: 58.5px 0;
   }

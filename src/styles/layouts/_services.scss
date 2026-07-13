@@ -1,0 +1,49 @@
+@use '../abstracts/variables' as variable;
+
+.services {
+  color: variable.$color-dark-blue;
+  margin: 0 0 200px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__name {
+    color: variable.$color-black-name;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 48px;
+    font-weight: 600;
+    margin: 0 0 100px;
+    max-width: 600px;
+  }
+
+  &__block {
+    align-self: self-start;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  &__item {
+    font-size: 36px;
+    font-weight: 600;
+    color: variable.$color-black-services-link;
+
+    &:not(:last-child) {
+      margin: 0 0 70px;
+    }
+  }
+}
