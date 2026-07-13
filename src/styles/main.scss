@@ -16,10 +16,11 @@
 // Папка layout ← каркас страницы
 
 @use 'layouts/header';  // Шапка сайта
+@use 'layouts/hero';  // Секция hero
+@use 'layouts/about';  // Секция aboutUs
 
 
 // ── 4. Компоненты ───────────────────────────────
 // Папка components ← независимые блоки
 
-@use 'components/hero';  // Секция hero
 @use 'components/navigation';  // Главное меню
