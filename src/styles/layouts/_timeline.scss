@@ -22,16 +22,27 @@
     margin: 0 0 80px;
   }
 
+  &__wrapper {
+    position: relative; /* контекст позиционирования для track/fills */
+
+    &.is-visible .timeline__fill {
+      animation: line-in 0.70s linear forwards;
+      animation-delay: calc(var(--i) * 0.35s);
+    }
+  }
+
   &__years {
+    list-style: none;
+    padding: 0;
+    position: relative;
     display: flex;
     justify-content: space-between;
-    // gap: 0 100px;
     margin: 0 0 267px;
+    z-index: 1; /* список поверх линии */
   }
 
   &__card {
     max-width: 225px;
-    // flex-grow: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,6 +58,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    z-index: 1;
+    opacity: 0;
+    transform: translateY(16px);
+
+    .timeline__wrapper.is-visible & {
+      animation: node-in .5s ease-out forwards;
+      animation-delay: calc(var(--i) * 0.35s);
+    }
   }
 
   &__year {
@@ -55,11 +75,64 @@
     font-weight: 700;
   }
 
+  /* базовая серая линия — от центра первого круга до центра последнего */
+  &__track {
+    position: absolute;
+    top: calc(135 / 2) + px;
+    left: calc(135 / 2) + px;
+    right: calc(135 / 2) + px;
+    height: 2px;
+    background: transparent;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  /* контейнер для сегментов заливки — занимает ту же зону, что и track */
+  &__fills {
+    position: absolute;
+    top: calc(135 / 2) + px;
+    left: calc(135 / 2) + px;
+    right: calc(135 / 2) + px;
+    height: 2px;
+    display: flex;
+    transform: translateY(-50%);
+    z-index: 0;
+  }
+
+  &__fill {
+    flex: 1 0 calc(100% / (var(--items-count) - 1)); // --items-count — это просто общее число узлов (кругов) в timeline, то есть N
+    height: 100%;                                    // --items-count — прописан в timeline__wrapper в html разметке
+    background: #1849a9;
+    transform: scaleX(0);
+    transform-origin: left center;
+
+    .timeline__wrapper.is-visible & {
+      animation: line-in 0.70s linear forwards;
+      animation-delay: calc(var(--i) * 0.35s);
+    }
+  }
+
   &__year-text {
     margin: 0;
     font-size: 20px;
     font-weight: 600;
     line-height: 1.35;
     max-width: 540px;
+    opacity: 0;
+    transform: translateY(16px);
+
+    .timeline__wrapper.is-visible & {
+      animation: node-in .5s ease-out forwards;
+      animation-delay: calc(var(--i) * 0.35s);
+    }
   }
+
+}
+
+@keyframes node-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes line-in {
+  to { transform: scaleX(1); }
 }

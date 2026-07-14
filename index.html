@@ -17,22 +17,22 @@
           <nav class="navigation">
             <ul class="navigation__list">
               <li class="navigation__item">
-                <a class="navigation__link" href="#">
+                <a class="navigation__link" href="#about">
                   About Us
                 </a>
               </li>
               <li class="navigation__item">
-                <a class="navigation__link" href="#">
+                <a class="navigation__link" href="#timeline">
                   Timeline
                 </a>
               </li>
               <li class="navigation__item">
-                <a class="navigation__link" href="#">
+                <a class="navigation__link" href="#services">
                   Services
                 </a>
               </li>
               <li class="navigation__item">
-                <a class="navigation__link" href="#">
+                <a class="navigation__link" href="#footer">
                   Contacts
                 </a>
               </li>
@@ -59,7 +59,7 @@
                   with a commitment to safety, quality, and
                   long-term partnerships.
                 </p>
-                <a class="hero__button" href="#">
+                <a class="hero__button" href="#services">
                   Explore Services
                 </a>
               </div>
@@ -68,7 +68,7 @@
         </div>
       </section>
 
-      <section class="about">
+      <section id="about" class="about">
         <div class="about__wrapper">
           <div class="about__background"></div>
           <div class="container about__container">
@@ -120,64 +120,85 @@
         </div>
       </section>
 
-      <section class="timeline">
+      <section id="timeline" class="timeline">
         <div class="container timeline__container">
           <p class="timeline__name">TIMELINE</p>
           <h2 class="timeline__title">OUR JOURNEY</h2>
-          <div class="timeline__years">
-            <div class="timeline__card">
-              <div class="timeline__year-block">
-                <p class="timeline__year">2012</p>
-              </div>
-              <p class="timeline__year-text">
-                Company established
-              </p>
+          <div class="timeline__wrapper" style="--items-count: 6;">
+
+            <!-- базовая серая линия -->
+            <div class="timeline__track" aria-hidden="true"></div>
+
+            <!-- N-1 сегментов заливки -->
+            <div class="timeline__fills" aria-hidden="true">
+              <span class="timeline__fill" style="--i: 1"></span> <!-- между 2012 и 2014 -->
+              <span class="timeline__fill" style="--i: 3"></span> <!-- между 2014 и 2017 -->
+              <span class="timeline__fill" style="--i: 5"></span> <!-- между 2017 и 2020 -->
+              <span class="timeline__fill" style="--i: 7"></span> <!-- между 2020 и 2023 -->
+              <span class="timeline__fill" style="--i: 9"></span> <!-- между 2023 и Today -->
             </div>
-            <div class="timeline__card">
-              <div class="timeline__year-block">
-                <p class="timeline__year">2014</p>
-              </div>
-              <p class="timeline__year-text">
-                Expanded engineering services
-              </p>
-            </div>
-            <div class="timeline__card">
-              <div class="timeline__year-block">
-                <p class="timeline__year">2017</p>
-              </div>
-              <p class="timeline__year-text">
-                Started industrial maintenance projects
-              </p>
-            </div>
-            <div class="timeline__card">
-              <div class="timeline__year-block">
-                <p class="timeline__year">2020</p>
-              </div>
-              <p class="timeline__year-text">
-                Added auditing and technical consulting
-              </p>
-            </div>
-            <div class="timeline__card">
-              <div class="timeline__year-block">
-                <p class="timeline__year">2023</p>
-              </div>
-              <p class="timeline__year-text">
-                Expanded portfolio across multiple industrie
-              </p>
-            </div>
-            <div class="timeline__card">
-              <div class="timeline__year-block">
-                <p class="timeline__year">Today</p>
-              </div>
-              <p class="timeline__year-text">
-                Continuing to deliver reliable engineering solutions
-              </p>
-            </div>
+
+            <ul class="timeline__years">
+              <li class="timeline__card" style="--i: 0">
+                <div class="timeline__year-block">
+                  <p class="timeline__year">2012</p>
+                </div>
+                <p class="timeline__year-text">
+                  Company established
+                </p>
+              </li>
+
+              <li class="timeline__card" style="--i: 2">
+                <div class="timeline__year-block">
+                  <p class="timeline__year">2014</p>
+                </div>
+                <p class="timeline__year-text">
+                  Expanded engineering services
+                </p>
+              </li>
+
+              <li class="timeline__card" style="--i: 4">
+                <div class="timeline__year-block">
+                  <p class="timeline__year">2017</p>
+                </div>
+                <p class="timeline__year-text">
+                  Started industrial maintenance projects
+                </p>
+              </li>
+              
+              <li class="timeline__card" style="--i: 6">
+                <div class="timeline__year-block">
+                  <p class="timeline__year">2020</p>
+                </div>
+                <p class="timeline__year-text">
+                  Added auditing and technical consulting
+                </p>
+              </li>
+
+              <li class="timeline__card" style="--i: 8">
+                <div class="timeline__year-block">
+                  <p class="timeline__year">2023</p>
+                </div>
+                <p class="timeline__year-text">
+                  Expanded portfolio across multiple industrie
+                </p>
+              </li>
+
+              <li class="timeline__card" style="--i: 10">
+                <div class="timeline__year-block">
+                  <p class="timeline__year">Today</p>
+                </div>
+                <p class="timeline__year-text">
+                  Continuing to deliver reliable engineering solutions
+                </p>
+              </li>
+
+            </ul>
           </div>
         </div>
       </section>
 
-      <section class="services">
+      <section id="services" class="services">
         <div class="container services__container">
           <p class="services__name">SERVICES</p>
           <h2 class="services__title">
@@ -316,7 +337,7 @@
       </section>
     </main>
 
-    <footer class="footer">
+    <footer id="footer" class="footer">
       <div class="container footer__container">
         <p class="footer__name">CONTACTS</p>
         <h2 class="footer__title">

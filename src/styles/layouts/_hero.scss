@@ -2,7 +2,7 @@
 @use '../abstracts/variables' as variable;
 
 .hero {
-  
+
   &__wrapper {
     max-width: 1920px;
     margin: 0 auto;
@@ -70,11 +70,14 @@
   }
 
   &__button {
+    // box-sizing: content-box;
+    display: inline-block;
     text-decoration: none;
     color: inherit;
     font-size: 24px;
     font-weight: 600;
-    padding: 12px 50px 14px;
+    line-height: 1.04;
+    padding: 18px 45px 18px;
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(3px);
     border-radius: 15px;
