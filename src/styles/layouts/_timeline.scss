@@ -25,10 +25,6 @@
   &__wrapper {
     position: relative; /* контекст позиционирования для track/fills */
 
-    &.is-visible .timeline__fill {
-      animation: line-in 0.70s linear forwards;
-      animation-delay: calc(var(--i) * 0.35s);
-    }
   }
 
   &__years {
@@ -67,6 +63,8 @@
       animation: node-in .5s ease-out forwards;
       animation-delay: calc(var(--i) * 0.35s);
     }
+
+    
   }
 
   &__year {
@@ -124,6 +122,16 @@
     .timeline__wrapper.is-visible & {
       animation: node-in .5s ease-out forwards;
       animation-delay: calc(var(--i) * 0.35s);
+    }
+  }
+
+  @at-root .timeline.no-anim {
+    .timeline__year-block,
+    .timeline__year-text,
+    .timeline__fill {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 
