@@ -38,12 +38,10 @@
   }
 
   &__item {
-    font-size: 36px;
-    font-weight: 600;
-    color: variable.$color-black-services-link;
-
+    font-size: 0;
+    line-height: 0;
     &:not(:last-child) {
-      margin: 0 0 70px;
+      margin: 0 0 50px;
     }
   }
 }

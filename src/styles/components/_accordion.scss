@@ -1,0 +1,181 @@
+@use '../abstracts/variables' as variable;
+
+$color-bg:          #f4f4f5;
+$color-text:        #18181b;
+$color-text-muted:  #9a9aa2;
+$color-text-soft:   #6b6b74;
+$color-accent:      #2563eb;
+$color-border:      #e4e4e7;
+
+$radius-lg: 16px;
+
+$font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+$transition-fast: 200ms cubic-bezier(.4, 0, .2, 1);
+$transition-mid:  320ms cubic-bezier(.4, 0, .2, 1);
+$transition-height: 360ms cubic-bezier(.4, 0, .2, 1);
+
+$bp-tablet: 860px;
+
+
+// ----  Компонент accordion --------------------------------
+.accordion {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(550px, 555px) 1fr;
+  gap: 0 35px;
+  align-items: stretch; // content-outer растягивается под высоту списка
+
+  @media (max-width: $bp-tablet) {
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+  }
+
+  // ---- Колонка 1: список пунктов ----
+  &__list {
+    grid-column: 1;
+    position: relative; // точка отсчёта для offsetTop в JS
+  }
+
+  &__item {
+  }
+
+  &__trigger {
+    all: unset;
+    display: flex;
+    align-items: center;
+    gap: 0 19px;
+    width: 100%;
+    cursor: pointer;
+    font-size: 36px;
+    font-weight: 600;
+    color: variable.$color-black-services-link;
+    line-height: 1.362;
+    transition: color $transition-fast;
+
+    &:hover { 
+      color: variable.$color-black-name; 
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      width: 14px;
+      height: 14px;
+      transition: transform $transition-mid;
+      color: $color-accent;
+      opacity: 0;
+      // visibility: hidden;
+      display: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-accent;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+  }
+
+  &__item[data-open="true"] &__trigger {
+    color: variable.$color-black;
+
+    .accordion__trigger-icon {
+      display: block;
+      opacity: 1;
+      // transform: rotate(90deg);
+    }
+  }
+
+  // ---- Колонка 2: внешняя обёртка, которая анимирует ВЫСОТУ ----
+  // grid-template-rows: 0fr → 1fr — это то же самое, что использовалось
+  // для раскрытия каждого пункта в первой версии, только здесь
+  // схлопывается вся правая часть целиком (текст + картинка вместе)
+  &__content-outer {
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: 1fr;               // открыто по умолчанию
+    transition: grid-template-rows $transition-height;
+
+    &[data-collapsed="true"] {
+      grid-template-rows: 0fr;             // схлопнуто до нулевой высоты
+    }
+  }
+
+  // overflow: hidden — обязательное условие приёма 0fr/1fr,
+  // иначе контент будет "вылезать" во время анимации
+  &__content-inner {
+    overflow: hidden;
+    min-height: 0;
+
+    display: grid;
+    grid-template-columns: minmax(200px, 260px) 1fr;
+    column-gap: 24px;
+    height: 100%;
+  }
+
+  // ---- Рельс с текстом описания ----
+  &__desc-rail {
+    position: relative;
+    min-height: 100%;
+
+    @media (max-width: $bp-tablet) {
+      min-height: 0;
+    }
+  }
+
+  &__desc {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    // padding-top: 22px;
+    font-size: 20px;
+    line-height: 1.6;
+    color: $color-text-soft;
+
+    transform: translateY(var(--desc-offset, 0px));
+    transition: transform $transition-mid, opacity $transition-fast;
+
+    &--switching { opacity: 0; }
+
+    @media (max-width: $bp-tablet) {
+      position: static;
+      transform: none !important;
+    }
+  }
+
+  // ---- Статичный блок изображения ----
+  &__image-block {
+    position: relative;
+    margin: 0;
+    min-height: 100%;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    background: $color-border;
+
+    @media (max-width: $bp-tablet) {
+      min-height: 260px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity $transition-fast;
+
+    &--switching { opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__content-outer,
+    &__desc,
+    &__image,
+    &__trigger-icon {
+      transition: none !important;
+    }
+  }
+}
