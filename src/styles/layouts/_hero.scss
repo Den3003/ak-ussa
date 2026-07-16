@@ -4,8 +4,6 @@
 .hero {
 
   &__wrapper {
-    max-width: 1920px;
-    margin: 0 auto;
     position: relative;
     padding: 0 0 100px;
     min-height: 100vh; 
@@ -50,7 +48,7 @@
   }
 
   &__content {
-    max-width: 610px;
+    // max-width: 610px;
     // flex-grow: 1;
   }
 
@@ -60,6 +58,7 @@
     font-weight: 600;
     line-height: 1.19231;
     margin: 0 0 20px;
+    max-width: 690px;
   }
 
   &__text {
@@ -67,6 +66,7 @@
     letter-spacing: 1%;
     line-height: 1.375;
     margin: 0 0 30px;
+    max-width: 610px;
   }
 
   &__button {
@@ -78,8 +78,13 @@
     font-weight: 600;
     line-height: 1.04;
     padding: 18px 45px 18px;
-    background: rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(3px);
     border-radius: 15px;
+    transition: background-color .3s ease-in;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.4);
+    }
   }
 }

@@ -3,6 +3,9 @@
 .opportunities {
   color: variable.$color-dark-blue;
   margin: 0 0 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__container {
     display: flex;
@@ -42,5 +45,7 @@
 
   &__image {
     display: block;
+    max-width: 100%;
+    height: auto;
   }
 }

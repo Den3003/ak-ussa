@@ -6,14 +6,12 @@
   &__wrapper {
     position: relative;
     padding: 160px 0 250px;
-    max-width: 1920px;
-    margin: 0 auto;
   }
 
   &__background {
     position: absolute;
     inset: 0;
-    background: url("../../assets/images/backgroundAboutUs.jpg");
+    background: url("../../assets/images/backgroundAboutUs.png");
     /* @include mix.bg-image-set(
       $path: "/src/assets/images/main",
       $gradient: variable.$gradient-hero,
@@ -22,7 +20,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    z-index: -1;
+    z-index: 1;
   }
 
   &__container {
@@ -58,20 +56,26 @@
     font-size: 20px;
     line-height: 1.35;
     margin: 0 0 50px;
+    color: variable.$color-black;
   }
 
   &__cards {
     width: 100%;
     display: flex;
-    gap: 0 25px;
+    justify-content: space-between;
+    // gap: 0 25px;
   }
 
   &__cards-wrapper {
-    text-align: center;
+    width: 421px;
+    // text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-radius: 30px;
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 10px 50px 0 rgba(0, 64, 128, 0.05);
-    flex-grow: 1;
+    // flex-grow: 1;
     padding: 58.5px 0;
   }
 
@@ -86,9 +90,12 @@
   }
 
   &__cards-title {
+    text-align: center;
     font-size: 24px;
     font-weight: 600;
     line-height: 1.38;
     margin: 0;
+    color: variable.$color-black;
+    max-width: 345px;
   }
 }
