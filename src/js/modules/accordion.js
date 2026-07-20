@@ -8,7 +8,6 @@
 
 export function createAccordion(root) {
   const items = Array.from(root.querySelectorAll('.accordion__item'));
-  const contentOuter = root.querySelector('.accordion__content-outer');
   const descEl = root.querySelector('.accordion__desc');
   const imgEl = root.querySelector('.accordion__image');
 
@@ -20,7 +19,7 @@ export function createAccordion(root) {
   function moveDescTo(item) {
     if (!item) {
       return;
-    };
+    }
     const trigger = item.querySelector('.accordion__trigger');
     const offset = trigger.offsetTop; // позиция триггера внутри списка
     descEl.style.setProperty('--desc-offset', `${offset}px`);
@@ -34,19 +33,16 @@ export function createAccordion(root) {
     imgEl.alt = trigger.dataset.alt || '';
   }
 
-  // ---- Схлопывание / разворот ВСЕГО правого блока по высоте ----
-  function expandOuter() {
-    contentOuter.dataset.collapsed = 'false';
+  function showContent() {
+    descEl.classList.remove('accordion__desc--hidden');
   }
 
-  function collapseOuter() {
-    contentOuter.dataset.collapsed = 'true';
+  function hideContent() {
+    descEl.classList.add('accordion__desc--hidden');
   }
 
   // ---- Переключение на новый активный пункт ----
   function activateItem(item) {
-    const wasCollapsed = contentOuter.dataset.collapsed === 'true';
-
     items.forEach((i) => {
       const isTarget = i === item;
       i.dataset.open = String(isTarget);
@@ -55,24 +51,18 @@ export function createAccordion(root) {
 
     activeItem = item;
     moveDescTo(item);
-    expandOuter();
+    showContent();
 
     // короткий fade текста и картинки перед подменой содержимого —
-    // картинка при этом НЕ меняет размер и позицию, только opacity/src.
-    // Если блок до этого был схлопнут — не мигаем контентом,
-    // а ждём, пока анимация высоты подрастёт
-    const fillDelay = wasCollapsed ? 0 : SWITCH_DELAY;
-
-    if (!wasCollapsed) {
-      descEl.classList.add('accordion__desc--switching');
-      imgEl.classList.add('accordion__image--switching');
-    }
+    // картинка при этом НЕ меняет размер и позицию, только opacity/src
+    descEl.classList.add('accordion__desc--switching');
+    imgEl.classList.add('accordion__image--switching');
 
     window.setTimeout(() => {
       fillContent(item);
       descEl.classList.remove('accordion__desc--switching');
       imgEl.classList.remove('accordion__image--switching');
-    }, fillDelay);
+    }, SWITCH_DELAY);
   }
 
   function deactivateAll() {
@@ -81,7 +71,7 @@ export function createAccordion(root) {
       i.querySelector('.accordion__trigger').setAttribute('aria-expanded', 'false');
     });
     activeItem = null;
-    collapseOuter(); // анимированно схлопываем высоту блока текст+картинка
+    hideContent();
   }
 
   function toggleItem(item) {
@@ -122,10 +112,14 @@ export function createAccordion(root) {
   if (activeItem) {
     fillContent(activeItem);
     moveDescTo(activeItem);
-    expandOuter();
   } else {
-    collapseOuter();
+    hideContent();
   }
 
   return { activateItem, deactivateAll, toggleItem };
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const root = document.querySelector('.accordion');
+  createAccordion(root);
+});
