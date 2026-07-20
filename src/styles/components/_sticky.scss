@@ -1,0 +1,20 @@
+
+
+.sticky {
+  position: relative;
+
+  &__background {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    height: 100dvh;
+    z-index: 0;
+    background: url("../../assets/images/backgroundAboutUs.png");
+    background-size: cover;
+    background-position: center;
+  }
+
+}
+
+
+

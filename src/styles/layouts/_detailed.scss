@@ -1,9 +1,12 @@
 @use '../abstracts/variables' as variable;
 
 .detailed {
+  position: relative;
+  z-index: 1;
   padding: 50px 0 86px;
   background-color: variable.$color-dark-blue;
-  margin: 0 0 140px;
+  // margin: 0 0 140px;
+  // display: none;
 
   &__container {
     display: flex;

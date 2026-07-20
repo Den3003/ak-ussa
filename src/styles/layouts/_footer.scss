@@ -1,6 +1,8 @@
 @use '../abstracts/variables' as variable;
 
 .footer {
+  padding: 130px 0 0;
+  // display: none;
 
   &__container {
     display: flex;
@@ -104,6 +106,8 @@
   }
 
   &__copyright {
+    position: relative;
+    z-index: 1;
     max-width: 1920px;
     background-color: variable.$color-main;
     padding: 15px 0 21px;

@@ -2,31 +2,39 @@
 
 .about {
   color: variable.$color-dark-blue;
+  padding: 160px 0 250px;
+  /* position: relative;
+  z-index: 1; */
+  // display: none;
 
-  &__wrapper {
+  /* &__wrapper {
     position: relative;
     padding: 160px 0 250px;
-  }
+    z-index: 0;
+  } */
 
-  &__background {
+  /* &__background {
     position: absolute;
     inset: 0;
     background: url("../../assets/images/backgroundAboutUs.png");
-    /* @include mix.bg-image-set(
+    @include mix.bg-image-set(
       $path: "/src/assets/images/main",
       $gradient: variable.$gradient-hero,
       $formats: (jpg)
-    ); */
+    );
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     z-index: 1;
-  }
+  } */
 
   &__container {
+    // text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* position: relative;
+    z-index: -1; */
   }
 
   &__name {
