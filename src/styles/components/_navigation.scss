@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as variable;
+
 .navigation {
 
   &__list {
@@ -9,7 +11,27 @@
   }
 
   &__link {
+    position: relative;
     text-decoration: none;
     color: inherit;
+    font-size: 20px;
+    font-weight: 600;
+    outline: none;
+    letter-spacing: 3%;
+
+    &:after {
+      content: "";
+      display: block;
+      height: 2px;
+      background-color: variable.$color-main;
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &:hover:after,
+    &:focus-visible:after  {
+      transform: scaleX(1);
+    }
   }
 }

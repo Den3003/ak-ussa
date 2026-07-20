@@ -3,7 +3,6 @@
 .services {
   color: variable.$color-dark-blue;
   margin: 0 0 200px;
-  // display: none;
 
   &__container {
     display: flex;
@@ -39,8 +38,8 @@
   }
 
   &__item {
-    font-size: 0;
-    line-height: 0;
+    // font-size: 0;
+    // line-height: 0;
     &:not(:last-child) {
       margin: 0 0 50px;
     }

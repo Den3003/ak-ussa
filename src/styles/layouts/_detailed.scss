@@ -5,9 +5,7 @@
   z-index: 1;
   padding: 50px 0 86px;
   background-color: variable.$color-dark-blue;
-  // margin: 0 0 140px;
-  // display: none;
-
+  
   &__container {
     display: flex;
     flex-direction: column;
@@ -44,6 +42,7 @@
   }
 
   &__card {
+    position: relative;
     width: 570px;
     max-width: 100%;
     background-color: variable.$color-blue-card;
@@ -54,6 +53,23 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px 0;
+    cursor: pointer;
+    z-index: 2;
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0, 102, 204, 0.5) 0%, rgba(0, 89, 178, 0.5) 100%);;
+      opacity: 0;
+      transition: opacity .5s ease;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    &:hover:before {
+      opacity: 1;
+    }
   }
 
   &__card-title {

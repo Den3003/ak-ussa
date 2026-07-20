@@ -3,8 +3,9 @@
 
 .hero {
   position: absolute;
-  inset: 0;
-  // display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
 
   &__wrapper {
     position: relative;

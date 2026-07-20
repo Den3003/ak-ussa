@@ -3,38 +3,11 @@
 .about {
   color: variable.$color-dark-blue;
   padding: 160px 0 250px;
-  /* position: relative;
-  z-index: 1; */
-  // display: none;
-
-  /* &__wrapper {
-    position: relative;
-    padding: 160px 0 250px;
-    z-index: 0;
-  } */
-
-  /* &__background {
-    position: absolute;
-    inset: 0;
-    background: url("../../assets/images/backgroundAboutUs.png");
-    @include mix.bg-image-set(
-      $path: "/src/assets/images/main",
-      $gradient: variable.$gradient-hero,
-      $formats: (jpg)
-    );
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    z-index: 1;
-  } */
 
   &__container {
-    // text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* position: relative;
-    z-index: -1; */
   }
 
   &__name {
@@ -75,16 +48,33 @@
   }
 
   &__cards-wrapper {
+    position: relative;
+    z-index: 1;
     width: 421px;
-    // text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     border-radius: 30px;
-    background: rgba(255, 255, 255, 0.2);
+    background-color: variable.$color-main;
     box-shadow: 0 10px 50px 0 rgba(0, 64, 128, 0.05);
-    // flex-grow: 1;
     padding: 58.5px 0;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #f7f7f7 0%, #f2f2f2 100%);
+      opacity: 0;
+      transition: opacity .5s ease;
+      border-radius: inherit;
+      z-index: -1;
+    }
+
+    &:hover:before {
+      opacity: 1;
+    }
   }
 
   &__cards-number {
@@ -94,7 +84,7 @@
   }
 
   &__cards-icon {
-    margin: 0 0 41px;
+    margin: 0 0 25px;
   }
 
   &__cards-title {
