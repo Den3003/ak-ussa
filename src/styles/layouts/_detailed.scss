@@ -36,16 +36,18 @@
   }
 
   &__cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(500px, 1fr));
+    // display: flex;
     gap: 25px;
-    justify-content: center;
-    flex-wrap: wrap;
+    // justify-content: center;
+    // flex-wrap: wrap;
   }
 
   &__card {
     position: relative;
-    width: 570px;
-    max-width: 100%;
+    // width: 570px;
+    // max-width: 100%;
     background-color: variable.$color-blue-card;
     border-radius: 20px;
     padding: 40px 0;
