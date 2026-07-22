@@ -3,12 +3,9 @@
 .opportunities {
   padding: 140px 0 0;
   color: variable.$color-dark-blue;
-  // margin: 0 0 130px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // display: none;
-
 
   &__container {
     display: flex;
@@ -40,17 +37,17 @@
     font-size: 20px;
     line-height: 1.35;
     margin: 0 0 40px;
+    color: variable.$color-black;
   }
 
   &__image-wrapper {
     position: relative;
     z-index: 1;
-    max-width: 1920px;
+    width: 100%;
   }
 
   &__image {
     display: block;
-    max-width: 100%;
-    height: auto;
+    width: 100%;
   }
 }

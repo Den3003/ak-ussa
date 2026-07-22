@@ -110,14 +110,12 @@
   &__copyright {
     position: relative;
     z-index: 1;
-    max-width: 1920px;
-    background-color: variable.$color-main;
     padding: 15px 0 21px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    border-left: solid 1px variable.$color-light-blue;
-    border-right: solid 1px variable.$color-light-blue;
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.3);
   }
 
   &__copyright-text {
