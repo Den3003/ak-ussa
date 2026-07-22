@@ -42,15 +42,19 @@
 
   &__cards {
     width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    /* width: 100%;
     display: flex;
-    justify-content: space-between;
-    // gap: 0 25px;
+    justify-content: space-between; */
+    gap: 25px;
   }
 
   &__cards-wrapper {
     position: relative;
     z-index: 1;
-    width: 421px;
+    // max-width: 100%;
+    // width: 421px;
     display: flex;
     flex-direction: column;
     align-items: center;
