@@ -56,6 +56,36 @@
 
           <picture class="hero__background">
 
+            <!-- ДЕСКТОП: AVIF -->
+            <source 
+              media="(min-width: 768px)"
+              type="image/avif"
+              srcset="
+                src/assets/images/hero/hero-desktop-1440w.avif 1440w,
+                src/assets/images/hero/hero-desktop-1920w.avif 1920w,
+                src/assets/images/hero/hero-desktop-2880w.avif 2880w,
+                src/assets/images/hero/hero-desktop-3840w.avif 3840w,
+              "
+              sizes="100vw"
+              width="1920"
+              height="1040"
+            >
+
+            <!-- ДЕСКТОП: WebP -->
+            <source 
+              media="(min-width: 768px)"
+              type="image/webp"
+              srcset="
+                src/assets/images/hero/hero-desktop-1440w.webp 1440w,
+                src/assets/images/hero/hero-desktop-1920w.webp 1920w,
+                src/assets/images/hero/hero-desktop-2880w.webp 2880w,
+                src/assets/images/hero/hero-desktop-3840w.webp 3840w,
+              "
+              sizes="100vw"
+              width="1920"
+              height="1040"
+            >
+
             <img
               class="hero__img"
               src="src/assets/images/hero/hero-desktop-1920w.jpg"
@@ -446,9 +476,48 @@
               for growth in the energy, petrochemical, construction, and manufacturing sectors.
             </p>
           </div>
-          <div class="opportunities__image-wrapper">
-            <img class="opportunities__image" src="/src/assets/images/opportunities.jpg" srcset="/src/assets/images/opportunities@2x.jpg 2x" alt="">
-          </div>
+          <picture class="opportunities__image-wrapper">
+            <!-- ДЕСКТОП: AVIF -->
+            <source 
+              media="(min-width: 768px)"
+              type="image/avif"
+              srcset="
+                src/assets/images/opportunities/opportunities-desktop-1440w.avif 1440w,
+                src/assets/images/opportunities/opportunities-desktop-1920w.avif 1920w,
+                src/assets/images/opportunities/opportunities-desktop-2880w.avif 2880w,
+                src/assets/images/opportunities/opportunities-desktop-3840w.avif 3840w,
+              "
+              sizes="100vw"
+              width="1920"
+              height="1040"
+            >
+
+            <!-- ДЕСКТОП: WebP -->
+            <source 
+              media="(min-width: 768px)"
+              type="image/webp"
+              srcset="
+                src/assets/images/opportunities/opportunities-desktop-1440w.webp 1440w,
+                src/assets/images/opportunities/opportunities-desktop-1920w.webp 1920w,
+                src/assets/images/opportunities/opportunities-desktop-2880w.webp 2880w,
+                src/assets/images/opportunities/opportunities-desktop-3840w.webp 3840w,
+              "
+              sizes="100vw"
+              width="1920"
+              height="1040"
+            >
+
+            <img
+              class="opportunities__image"
+              src="src/assets/images/opportunities/opportunities-desktop-1920w.jpg"
+              srcset="src/assets/images/opportunities/opportunities-desktop-3840w.jpg 2x"
+              alt=""
+              width="1920"
+              height="905"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
         </section>
 
       </main>
