@@ -29,8 +29,8 @@ $bp-tablet: 860px;
 
   display: grid;
   // список | текст-рельс | картинка (статичная)
-  grid-template-columns: minmax(550px, 585px) minmax(200px, 260px) 1fr;
-  gap: 0 35px;
+  grid-template-columns: minmax(550px, 555px) minmax(200px, 260px) 1fr;
+  gap: 0 33px;
   align-items: stretch; // важно: content-колонки растягиваются под высоту списка
 
   /* @media (max-width: $bp-tablet) {
