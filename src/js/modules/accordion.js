@@ -11,7 +11,7 @@ export function createAccordion(root) {
   const descEl = root.querySelector('.accordion__desc');
   const imgEl = root.querySelector('.accordion__image');
 
-  const SWITCH_DELAY = 160; // должен совпадать с $transition-fast в SCSS
+  const SWITCH_DELAY = 200; // должен совпадать с $transition-fast в SCSS
 
   let activeItem = items.find((item) => item.dataset.open === 'true') || null;
 

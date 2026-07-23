@@ -8,22 +8,13 @@
 // =========================================================
 
 // ---- 1. Токены дизайна -----------------------------------
-$color-bg:          #f4f4f5;
-$color-text:        #18181b;
-$color-text-muted:  #9a9aa2;
-$color-text-soft:   #6b6b74;
-$color-accent:      #2563eb;
-$color-border:      #e4e4e7;
-
-$radius-lg: 16px;
-
 $transition-fast: 200ms cubic-bezier(.4, 0, .2, 1);
 $transition-mid:  320ms cubic-bezier(.4, 0, .2, 1);
 
 // Ниже этой ширины всё складывается в одну колонку
 $bp-tablet: 860px;
 
-// ---- 3. Компонент accordion --------------------------------
+// ---- Компонент accordion --------------------------------
 .accordion {
   width: 100%;
 
@@ -78,9 +69,10 @@ $bp-tablet: 860px;
     }
 
     &:focus-visible {
-      outline: 2px solid $color-accent;
+      color: variable.$color-black-name;
+      /* outline: 2px solid $color-accent;
       outline-offset: 4px;
-      border-radius: 4px;
+      border-radius: 4px; */
     }
   }
 
@@ -123,10 +115,10 @@ $bp-tablet: 860px;
     &--switching { opacity: 0; }
     &--hidden { opacity: 0; pointer-events: none; }
 
-    @media (max-width: $bp-tablet) {
+    /* @media (max-width: $bp-tablet) {
       position: static;
       transform: none !important;
-    }
+    } */
   }
 
   // ---- Колонка 3: статичный блок изображения ----
@@ -136,13 +128,13 @@ $bp-tablet: 860px;
     position: relative;
     margin: 0;
     min-height: 100%;
-    border-radius: $radius-lg;
+    border-radius: 20px;
     overflow: hidden;
-    background: $color-border;
+    // background: $color-border;
 
-    @media (max-width: $bp-tablet) {
+    /* @media (max-width: $bp-tablet) {
       min-height: 260px;
-    }
+    } */
   }
 
   &__image {
