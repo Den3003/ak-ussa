@@ -38,11 +38,11 @@
   }
 
   &__item {
-    // display: flex;
+    // display: block;
     // font-size: 0;
     // line-height: 0;
-    &:not(:last-child) {
+    /* &:not(:last-child) {
       margin: 0 0 59px;
-    }
+    } */
   }
 }

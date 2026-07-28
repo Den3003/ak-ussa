@@ -1,0 +1,196 @@
+@use '../abstracts/variables' as variable;
+
+// Базовые стили внутренних элементов
+.showcase {
+
+  &__tab {
+    position: relative;
+    z-index: 1;
+    color: variable.$color-black-services-link;
+    font-size: 36px;
+    font-weight: 600;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.33, 1, 0.68, 1);
+    display: flex;
+    align-items: center;
+    gap: 0 10px;
+    text-align: left;
+    user-select: none;
+
+    &:hover { 
+      color: variable.$color-black-name; 
+    }
+
+    &:focus-visible {
+      color: variable.$color-black-name;
+      // outline: 2px solid #6366f1;
+      // outline-offset: 2px;
+    }
+
+    &:active {
+      color: variable.$color-black;
+    }
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 20px;
+    color: variable.$color-black-services-text;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1), transform 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+  }
+}
+
+/* ================= DESKTOP РЕЖИМ (3 КОЛОНКИ) ================= */
+@media (min-width: 1025px) {
+  .showcase {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(550px, 562px) minmax(200px, 260px) 1fr;
+    grid-template-rows: repeat(7, 49px);
+    gap: 50.5px 28px;
+
+    &__icon {
+      display: none;
+    }
+
+    &__item {
+      // Магия CSS Grid: контейнер "растворяется", его дети попадают прямо в родительскую сетку .showcase
+      display: contents;
+
+      // Привязываем кнопки к 1-й колонке, а описания — ко 2-й колонке на уровень нужной строки
+      @for $i from 1 through 7 {
+        &:nth-child(#{$i}) {
+          .showcase__tab {
+            grid-column: 1;
+            grid-row: #{$i};
+          }
+          .showcase__panel {
+            grid-column: 2;
+            grid-row: #{$i};
+          }
+        }
+      }
+
+      // Все блоки с картинками позиционируются в 3-ю колонку во всю высоту сетки
+      .showcase__media {
+        grid-column: 3;
+        grid-row: 1 / -1;
+        position: relative;
+        height: 100%;
+        // min-height: calc((#{64px} * 7) + (#{1rem} * 6));
+        border-radius: 20px;
+        overflow: hidden;
+        background-color: #151c2c;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s cubic-bezier(0.33, 1, 0.68, 1);
+      }
+
+      .showcase__panel {
+        display: none;
+        // align-self: center;
+        // padding: 0.5rem 0;
+      }
+
+      // Стили ДЛЯ АКТИВНОГО раздела на десктопе
+      &--active {
+        .showcase__tab {
+          color: variable.$color-black;
+          // color: #f8fafc;
+          // background-color: #151c2c;
+          // border-color: rgba(#6366f1, 0.4);
+
+          .showcase__icon {
+            display: block;
+          }
+        }
+
+        .showcase__panel {
+          display: block;
+          animation: fadeIn 0.3s ease forwards;
+        }
+
+        .showcase__media {
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+    }
+  }
+}
+
+/* ================= MOBILE & TABLET РЕЖИМ (АККОРДЕОН) ================= */
+@media (max-width: 1024px) {
+  .showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+
+    &__icon {
+      display: none;
+    }
+
+    &__item {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+
+      // По умолчанию скрываем описание и картинку неактивных разделов
+      .showcase__panel,
+      .showcase__media {
+        display: none;
+      }
+
+      // При клике (активное состояние) раскрываем текст и картинку прямо ПОД кнопкой!
+      &--active {
+
+        .showcase__tab {
+          color: variable.$color-black;
+        }
+
+        .showcase__icon {
+          display: block;
+        }
+
+        .showcase__panel {
+          display: block;
+          padding: 1.25rem 1.25rem 0.75rem 1.25rem;
+          animation: fadeIn 0.3s ease forwards;
+        }
+
+        .showcase__media {
+          display: block;
+          padding: 0 1.25rem 1.25rem 1.25rem;
+          width: 100%;
+          height: 260px;
+          animation: fadeIn 0.3s ease forwards;
+
+          .showcase__img {
+            border-radius: 12px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

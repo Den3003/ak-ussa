@@ -29,5 +29,5 @@
 // Папка components ← независимые блоки
 
 @use 'components/navigation';  // Главное меню
-@use 'components/accordion';  // Аккордеон в секции Services
+@use 'components/showcase';  // Showcase в секции Services
 @use 'components/wrapper';  // Задний липкий фон wrapper
